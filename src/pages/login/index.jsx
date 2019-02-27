@@ -7,8 +7,30 @@ import React, {Component} from 'react'
 import logo from './logo.png'
 import './index.less'
 import LoginForm from '../../components/Login-Form'
+import {reqLogin} from "../../api";
 
 export default class Login extends Component {
+
+  //登陆的方法
+  login=async (username,password)=>{
+    //请求登陆
+        const result =await reqLogin(username,password);
+        console.log(result)
+        if (result.status===0) {
+          //登陆成功
+          //获取用户信息
+
+          //跳转到admin页面
+          this.props.history.replace('/')
+        }else if (result.status===1) {
+          //登陆失败
+          //提示登陆失败信息
+
+        }
+  }
+
+
+
   render() {
     return (
       <div className="login">
@@ -19,7 +41,7 @@ export default class Login extends Component {
 
         <section className="Login-From">
           <h3>用户登陆</h3>
-          <LoginForm/>
+          <LoginForm login={this.login}/>
         </section>
 
         </div>

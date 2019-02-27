@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types';
 import {
   Form,
   Icon,
@@ -8,10 +9,14 @@ import {
 
 } from 'antd';
 
+
 const Item = Form.Item
 
 
 class LoginForm extends Component {
+  static propTypes = {
+    login: PropTypes.func.isRequired
+  }
 
   loginSubmit = e => {
     e.preventDefault();
@@ -21,6 +26,12 @@ class LoginForm extends Component {
       if (!error) {
         //验证成功
         console.log('收集表单数据：', values)
+        const {username, password} = values
+
+        // 调用父组件login方法  由父组件发送ajax 请求
+        this.props.Login(username,password)
+
+
       } else {
         //验证失败
         //重置密码
@@ -32,12 +43,11 @@ class LoginForm extends Component {
        Object.values(obj) 将对象中每一个值，添加到一个数组中并返回数组
        arr.reduce()  统计错误信息
      */
-     const e= Object.values(error).reduce((prev, curr) => prev + curr.errors[0].message +' ',' ')
-
+        const errMsg = Object.values(error).reduce((prev, curr) => prev + curr.errors[0].message + ' ', ' ')
 
 
         //提示错误
-        message.error(e);
+        message.error(errMsg);
 
       }
     })
