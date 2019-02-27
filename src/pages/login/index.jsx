@@ -4,8 +4,9 @@
 
 import React, {Component} from 'react'
 
-import logo from './logo.png'
+import logo from '../../assets/imges/logo.png'
 import './index.less'
+
 import LoginForm from '../../components/Login-Form'
 import {reqLogin} from "../../api";
 
@@ -14,7 +15,7 @@ export default class Login extends Component {
   //登陆的方法
   login=async (username,password)=>{
     //请求登陆
-        const result =await reqLogin(username,password);
+        const result =await reqLogin({username,password});
         console.log(result)
         if (result.status===0) {
           //登陆成功

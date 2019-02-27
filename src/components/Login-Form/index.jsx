@@ -29,8 +29,7 @@ class LoginForm extends Component {
         const {username, password} = values
 
         // 调用父组件login方法  由父组件发送ajax 请求
-        this.props.Login(username,password)
-
+        this.props.login(username,password);
 
       } else {
         //验证失败
@@ -81,7 +80,7 @@ class LoginForm extends Component {
             {
               rules: [
                 {required: true, message: '请输入密码'},
-                {min: 6, message: '密码必须大于或小于6位数'},
+                {min: 4, message: '密码必须大于或小于6位数'},
                 {max: 16, message: '密码必须小于16位数'},
                 {pattern: /^[a-zA-Z0-9_]+$/, message: '必须是大小写字母、数字或者下划线'}
               ]
