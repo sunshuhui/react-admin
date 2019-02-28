@@ -1,4 +1,39 @@
 .admin-right-header{
-  height: 100px ;
+ 
   background-color: #eeb8cb;
+  .header-top{
+    padding: 20px;
+    text-align: right;
+    border-bottom: 1px solid #f8dae0;
+    a{
+      margin-left: 50px;
+    }
+  }
+  .header-bottom{
+    display: flex;
+    align-items: center;
+    .header-bottom-left{
+      font-size: 18px;
+      padding: 5px 0;
+      text-align: center;
+      &::after{
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -15px;
+        transform: translateX(-50%);
+        border-top: 15px solid #eeb8cb;
+        border-left: 13px solid transparent;
+        border-right: 13px solid transparent;
+      }
+    }
+    .header-bottom-right{
+      padding: 10px;
+      text-align: right;
+      img{
+        margin:0px 10px ;
+        width: 28px;
+      }
+    }
+  }
 }

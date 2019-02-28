@@ -2,8 +2,8 @@
 * 后台管理路由组件
 * */
 import React, {Component} from 'react'
-import {Row,Col} from 'antd'
-import {Switch,Route,Redirect}from 'react-router-dom'
+import {Row, Col} from 'antd'
+import {Switch, Route, Redirect} from 'react-router-dom'
 
 import LeftNave from "../../components/left-nave/left-nave";
 import Header from '../../components/header'
@@ -17,10 +17,21 @@ import Bar from '../charts/bar'
 import line from '../charts/line'
 import Pie from '../charts/pie'
 
+import MemoryUtils from '../../utils/memoryUtils'
+
 import './index.less'
+
 export default class Admin extends Component {
   render() {
-    return (
+    //判断是否登陆
+    //从内存中读取
+    const user = MemoryUtils.user;
+
+    if (!user || !user._id){
+      //判断成功的话，没有登陆过，直接刷新跳转到login页面让他登陆
+     return  <Redirect to='/login'/>
+    }
+      return (
 
         <Row className="admin">
           <Col span={4}><LeftNave/></Col>
@@ -45,7 +56,7 @@ export default class Admin extends Component {
 
         </Row>
 
-    )
+      )
   }
 }
 
