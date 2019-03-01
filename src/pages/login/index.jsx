@@ -29,9 +29,10 @@ export default class Login extends Component {
        setItem(result.data);
       //在内容中也保存一份
       MemoryUtils.user=result.data;
+      console.log(MemoryUtils.user);
       //跳转到admin页面
       this.props.history.replace('/')
-    } else if (result.status === 1) {
+    } else {
       //登陆失败
       //提示登陆失败信息
 

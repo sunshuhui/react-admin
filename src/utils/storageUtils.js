@@ -18,8 +18,11 @@ export const setItem = value => {
 
 //读取数据的方法
 export const getItem =()=>{
-  store.get(User_Key)
+  const value=store.get(User_Key)
+  return value || '';
 };
+
+
 
 //删除数据的方法
 export const removeItem =()=>{
