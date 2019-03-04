@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Card, Button, Icon, Table, Select, Input, message} from 'antd'
 import MyButton from "../../components/my-button";
 import {reqProductsList,reqSearchProductsList} from '../../api'
-import SaveUpdate from './saveupdata'
+
 
 const Option = Select.Option
 export default class Index extends Component {
@@ -39,10 +39,10 @@ export default class Index extends Component {
       }, {
         title: '操作',
         width: 200,
-        render: category => {
+        render: product => {
           return <div>
             <MyButton name='详情'/> &nbsp;&nbsp;&nbsp;
-            <MyButton name='修改'/>
+            <MyButton name='修改' onClick={()=>this.props.history.push('/product/saveupdate',{product})}/>
           </div>
         }
       }];
@@ -91,13 +91,12 @@ export default class Index extends Component {
       <Card
         title={
           <div>
-            <Select value='productName' onChange={value => this.handleChange('searchType', value)}
-                    onChange={e => this.handleChange('searchName', e.target.value)}>
+            <Select defaultValue='productName' onChange={value => this.handleChange('searchType', value)}>
               <Option value='productName'>根据商品名称</Option>
               <Option value='productDesc'>根据商品描述</Option>
             </Select>
             <Input placeholder='关键字' style={{width: 200, marginLeft: 15, marginRight: 15}}/>
-            <Button type='primary' onClick={() => this.getProducts(1, 2)}>搜素&nbsp;&nbsp;&nbsp;🔍</Button>
+            <Button type='primary' onClick={() => this.getProducts(1, 2)}>搜素&nbsp;&nbsp;&nbsp;</Button>
 
           </div>
         }

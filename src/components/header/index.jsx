@@ -3,12 +3,14 @@ import {Row, Col, Modal,message} from 'antd'
 import {withRouter} from 'react-router-dom';
 import dayjs from 'dayjs'
 
+
 import MemoryUtils from '../../utils/memoryUtils'
 import {removeItem} from "../../utils/storageUtils";
 import menuList from '../../config/menuConfig'
 import {reqAddWeather} from '../../api'
 
 import './index.less'
+import MyButton from '../../components/my-button';
 
 
 class Header extends Component {
@@ -78,6 +80,11 @@ class Header extends Component {
   getTitle = menu => {
     //（1）获取到 pathname
     const {pathname} = this.props.location;
+
+     if (pathname.indexOf('/product')===0) {
+       return '商品管理'
+     }
+
     //（2）for循环得到所有的title
     for (let i = 0; i < menu.length; i++) {
       let item = menu[i]
@@ -109,7 +116,8 @@ class Header extends Component {
       <div className="admin-right-header">
         <Row className='header-top'>
           <span>欢迎, {username}</span>
-          <a href="javascript:void(0);" onClick={this.logOut}>退出</a>
+          <MyButton onClick={this.logOut} name='退出' />
+
         </Row>
         <Row className='header-bottom'>
           <Col span={6} className='header-bottom-left'>{title}</Col>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, Input, Modal, Select} from "antd";
+import {Form, Input, Select} from "antd";
 import PropTypes from 'prop-types';
 
 
