@@ -23,10 +23,12 @@ class LeftNave extends Component {
         //获取当前路径
         const {pathname} = this.props.location;
 
-        const result = item.children.find(item => item.key === pathname)
+        const result = item.children.find(item => pathname.indexOf(item.key) === 0);
+
 
         if (result) {
           this.openkey = item.key
+
         }
 
 
@@ -51,7 +53,11 @@ class LeftNave extends Component {
 
   render() {
     //获取当前组件的pathname 值
-    const {pathname} = this.props.location;
+    let {pathname} = this.props.location;
+
+    if (/^\/product/.test(pathname)) {
+      pathname= '/product';
+    }
     return (
       <div className='left-nave'>
         <header>

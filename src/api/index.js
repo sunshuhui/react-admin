@@ -41,7 +41,13 @@ export const reqAddWeather = city => {
  }
 
  //添加分类的函数
-export  const reqAddCategory= (parentId,categoryName)=>ajax(prefix+'manage/category/add',{parentId,categoryName},'POST')
+export  const reqAddCategory= (parentId,categoryName)=>ajax(prefix+'/manage/category/add',{parentId,categoryName},'POST')
 
 //修改名称的函数
-export const  reqUpdataName=(categoryId,categoryName)=>ajax(prefix+'manage/category/update',{categoryId,categoryName},'POST')
+export const  reqUpdataName=(categoryId,categoryName)=>ajax(prefix+'/manage/category/update',{categoryId,categoryName},'POST')
+
+//商品管理函数
+export const  reqProductsList=(pageNum,pageSize)=>ajax(prefix+'/manage/product/list',{pageNum,pageSize})
+
+//请求搜索商品列表数据函数
+export const reqSearchProductsList = ({pageNum, pageSize, searchType, searchName}) => ajax(prefix + '/manage/product/search', {pageNum, pageSize, [searchType]: searchName})

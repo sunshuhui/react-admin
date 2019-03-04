@@ -10,7 +10,7 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import Home from '../home'
 import Category from '../category'
-import Product from '../product'
+import Product from '../product/product'
 import User from '../user'
 import Role from '../role'
 import Bar from '../charts/bar'
@@ -30,7 +30,7 @@ export default class Admin extends Component {
     //判断是否登陆
     //从内存中读取
     const user = MemoryUtils.user;
-    console.log(user);
+
 
     if (!user || !user._id) {
       //判断成功的话，没有登陆过，直接刷新跳转到login页面让他登陆
